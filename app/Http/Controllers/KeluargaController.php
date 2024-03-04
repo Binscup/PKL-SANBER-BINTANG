@@ -64,7 +64,7 @@ class KeluargaController extends Controller
     public function edit(string $id)
     {
         $keluarga = DB::table('keluarga')->where('id', $id)->first();
-        return view('karyawan.data-keluarga.index', ['keluarga' => $keluarga]);
+        return view('karyawan.data-keluarga.edit', ['keluarga' => $keluarga]);
     }
 
     /**
@@ -78,7 +78,7 @@ class KeluargaController extends Controller
             'status' => 'required',
             'tanggal_lahir' => 'required',
         ]);
-
+        
         DB::table('keluarga')
             ->where('id', $id)
             ->update(

@@ -61,7 +61,7 @@ class PekerjaanController extends Controller
     public function edit(string $id)
     {
         $table_pekerjaan = DB::table('table_pekerjaan')->where('id', $id)->first();
-        return view('karyawan.pekerjaan.index', ['table_pekerjaan' => $table_pekerjaan]);
+        return view('karyawan.pekerjaan.edit', ['table_pekerjaan' => $table_pekerjaan]);
     }
 
     /**
@@ -69,7 +69,23 @@ class PekerjaanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'jabatan' => 'required',
+            'peran' => 'required',
+        ]);
+
+        DB::table('table_pekerjaan')
+            ->where('id', $id)
+            ->update(
+                [
+                    'nama' => $request->nama,
+                    'jabatan' => $request->jabatan,
+                    'peran' => $request->peran,
+                ],
+            );
+
+        return redirect('/pekerjaan');
     }
 
     /**

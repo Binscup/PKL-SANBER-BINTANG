@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('gaji', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('gaji_pokok');
+            $table->string('gaji_bersih');
+            $table->string('tanggal_penerimaan');
             $table->timestamps();
         });
     }

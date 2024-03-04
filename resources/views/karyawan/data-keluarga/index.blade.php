@@ -21,12 +21,12 @@
                 <tbody > 
                     @forelse ($keluarga as $key => $value)
                         <tr>
-                            <td>
-                                <p class="text-xs text-center font-weight-bold mb-0">{{ $key + 1 }}</p>
+                           <td>
+                                <p class="text-xs text-center font-weight-bold mb-0">{{ $key++ }}</p>
                             </td>
-                            <td>
+                            {{-- <td>
                                 <p class="text-xs text-center font-weight-bold mb-0">{{ $value->nama }}</p>
-                            </td>
+                            </td> --}}
                             <td>
                                 <p class="text-xs text-center font-weight-bold mb-0">{{ $value->jenis_kelamin }}</p>
                             </td>
@@ -37,7 +37,7 @@
                                 <p class="text-xs text-center font-weight-bold mb-0">{{ $value->tanggal_lahir }}</p>
                             </td>
                             <td class="align-middle text-center">
-                                <a href="/keluarga/{{ $value->id }}/edit"
+                                <a href="{{ route('keluarga.edit', $value->id) }}"
                                     class="btn bg-gradient-warning mt-3 ">Edit</a>
                                 <form action="{{ route('keluarga.destroy', $value->id) }}" method="post"
                                     style="display:inline;">

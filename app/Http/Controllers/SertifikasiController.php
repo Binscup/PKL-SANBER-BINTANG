@@ -62,7 +62,7 @@ class SertifikasiController extends Controller
     public function edit(string $id)
     { {
             $sertifikasi = DB::table('sertifikasi')->where('id', $id)->first();
-            return view('karyawan.sertifikasi.index', ['sertifikasi' => $sertifikasi]);
+            return view('karyawan.sertifikasi.edit', ['sertifikasi' => $sertifikasi]);
         }
     }
 
@@ -71,7 +71,24 @@ class SertifikasiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'jenis_sertifikasi' => 'required',
+            'sertifikasi' => 'required',
+        ]);
+
+        DB::table('sertifikasi')
+            ->where('id', $id)
+            ->update(
+                [
+                    'nama' => $request->nama,
+                    'jenis_sertifikasi' => $request->jenis_sertifikasi,
+                    'sertifikasi' => $request->sertifikasi,
+
+                ],
+            );
+
+        return redirect('/sertifikasi');
     }
 
     /**

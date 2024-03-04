@@ -36,7 +36,7 @@
                                 <p class="text-xs text-center font-weight-bold mb-0">{{ $value->sertifikasi }}</p>
                             </td>
                             <td class="align-middle text-center">
-                                <a href="/keluarga/{{ $value->id }}/edit" class="btn bg-gradient-warning mt-3 ">Edit</a>
+                                <a href="{{ route('sertifikasi.edit', $value->id) }}" class="btn bg-gradient-warning mt-3 ">Edit</a>
                                 <form action="{{ route('sertifikasi.destroy', $value->id) }}" method="post"
                                     style="display:inline;">
                                     @csrf

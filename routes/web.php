@@ -31,7 +31,7 @@ Route::get(uri: '/auth/redirect', action: [socialController::class, 'redirect'])
 Route::get(uri: '/google/redirect', action: [socialController::class, 'googleCallback'])->name(name: 'google.callback');
 
 Route::group(['middleware' => 'admin'], function () {
-    Route::resource('/user-management', adminController::class);
+    Route::resource('/user-management   ', adminController::class);
 
 });
 

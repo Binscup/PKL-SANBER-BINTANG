@@ -36,7 +36,7 @@
                                 <p class="text-xs text-center font-weight-bold mb-0">{{ $value->peran }}</p>
                             </td>
                             <td class="align-middle text-center">
-                                <a href="/keluarga/{{ $value->id }}/edit" class="btn bg-gradient-warning mt-3 ">Edit</a>
+                                <a href="{{ route('pekerjaan.edit', $value->id)}}" class="btn bg-gradient-warning mt-3 ">Edit</a>
                                 <form action="{{ route('pekerjaan.destroy', $value->id) }}" method="post"
                                     style="display:inline;">
                                     @csrf

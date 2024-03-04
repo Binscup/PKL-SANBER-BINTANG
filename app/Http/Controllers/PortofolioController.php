@@ -67,7 +67,7 @@ class PortofolioController extends Controller
     public function edit(string $id)
     {
         $portofolio_pendidikan = DB::table('portofolio_pendidikan')->where('id', $id)->first();
-        return view('karyawan.portofolio.index', ['portofolio_pendidikan' => $portofolio_pendidikan]);
+        return view('karyawan.portofolio.edit', ['portofolio_pendidikan' => $portofolio_pendidikan]);
     }
 
     /**
