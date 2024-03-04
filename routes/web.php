@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin;
+use App\Http\Controllers\adminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\socialController;
@@ -27,12 +29,15 @@ Route::get('/', function () {
 
 Route::get(uri: '/auth/redirect', action: [socialController::class, 'redirect'])->name(name: 'google.redirect');
 Route::get(uri: '/google/redirect', action: [socialController::class, 'googleCallback'])->name(name: 'google.callback');
-    
 
-Route::get('/profile', [karyawanController::class, 'profile']);
-// Route::get('/portofolio', [karyawanController::class, 'portofolio']);
-Route::resource('/keluarga', KeluargaController::class);
+Route::group(['middleware' => 'admin'], function () {
+    Route::resource('/user-management', adminController::class);
+
+});
+
 Route::resource('/karyawan', karyawanController::class);
+Route::get('/profile', [karyawanController::class, 'profile']);
+Route::resource('/keluarga', KeluargaController::class);
 Route::resource('/pendidikan', PortofolioController::class);
 Route::resource('/pekerjaan', PekerjaanController::class);
 Route::resource('/sertifikasi', SertifikasiController::class);
