@@ -1,6 +1,6 @@
 @extends('layout-app')
 @section('content')
-    <h3>Data Sertifikasi</h3>
+    <h3>Data Gaji Karyawan</h3>
     <a href="{{ route('user-management   .create') }}">
         <button type="button" class="btn bg-gradient-success mt-3 ">Create</button>
     </a>
@@ -12,8 +12,8 @@
                     <tr>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Gaji Pokok</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Gaji Bersih</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">GajiPokok</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">GajiBersih</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">tanggal penerimaan</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">action
                         </th>
@@ -38,7 +38,7 @@
                                 <p class="text-xs text-center font-weight-bold mb-0">{{ $value->tanggal_penerimaan }}</p>
                             </td>
                             <td class="align-middle text-center">
-                                <a href="/keluarga/{{ $value->id }}/edit" class="btn bg-gradient-warning mt-3 ">Edit</a>
+                                <a href="{{ route('user-management   .edit', $value->id) }}" class="btn bg-gradient-warning mt-3 ">Edit</a>
                                 <form action="{{ route('user-management   .destroy', $value->id) }}" method="post"
                                     style="display:inline;">
                                     @csrf
