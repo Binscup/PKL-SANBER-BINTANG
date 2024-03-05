@@ -64,7 +64,7 @@ class adminController extends Controller
     public function edit(string $id)
     {
         $gaji = DB::table('gaji')->where('id', $id)->first();
-        return view('admin.user-management.index', ['gaji' => $gaji]);
+        return view('admin.user-management.edit', ['gaji' => $gaji]);
     }
 
     /**
